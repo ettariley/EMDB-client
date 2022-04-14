@@ -2,7 +2,7 @@
   "name": "emdb-client",
   "version": "1.0.0",
   "description": "Client side for movie database app]",
-  "main": "src/index.html",
+  "default": "src/index.html",
   "scripts": {
     "test": "test"
   },
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/ettariley/EMDB-client/issues"
   },
-  "homepage": "https://github.com/ettariley/EMDB-client#readme"
+  "homepage": "https://github.com/ettariley/EMDB-client#readme",
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0"
+  }
 }
