@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MainView } from './components/main-view/main-view';
 
 // Import statement to indicate you need to bundle './index.scss'
 import './index.scss';
@@ -8,9 +9,7 @@ import './index.scss';
 class EMDBApplication extends React.Component {
   render() {
     return (
-      <div className='emdb'>
-        <div>What's up?</div>
-      </div>
+      <MainView />
     );
   }
 }
