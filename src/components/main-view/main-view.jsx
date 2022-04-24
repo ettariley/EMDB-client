@@ -3,9 +3,7 @@ import axios from 'axios';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import jojoRabbit from '../../img/jojorabbit.jpg';
-import tenThings from '../../img/10things.jpeg';
-import bigHero6 from '../../img/bighero6.jpg';
+import { UserRegistrationView } from '../user-registration-view/user-registration-view';
 
 export class MainView extends React.Component {
 
