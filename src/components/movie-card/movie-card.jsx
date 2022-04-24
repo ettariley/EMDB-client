@@ -10,7 +10,21 @@ export class MovieCard extends React.Component {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    Title: PropTypes.string
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string
+    }).isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string,
+      Birth: PropTypes.string
+    }).isRequired,
+    ReleaseYear: PropTypes.string.isRequired,
+    Actors: PropTypes.array,
+    ImageURL: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };
