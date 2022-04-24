@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieView extends React.Component {
   
@@ -7,7 +8,7 @@ export class MovieView extends React.Component {
     return (
       <div className='movie-view'>
         <div className='movie-poster'>
-          <img src={movie.ImagePath} />
+          <img src={movie.ImageURL} />
           </div>
         <div className='movie-title'>
           <span className='label'>Title: </span>
@@ -25,8 +26,37 @@ export class MovieView extends React.Component {
           <span className='label'>Director: </span>
           <span className='value'>{movie.Director.Name}</span>
         </div>
+        <div className='movie-release-year'>
+          <span className='label'>Release Year: </span>
+          <span className='value'>{movie.ReleaseYear}</span>
+        </div>
+        <div className='movie-featured'>
+          <span className='label'>Featured: </span>
+          <span className='value'>{movie.Featured}</span>
+        </div>
         <button onClick={() => { onBackClick(null); }}>Back</button>
       </div>
     );
   }
 }
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string
+    }).isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string,
+      Birth: PropTypes.string
+    }).isRequired,
+    ReleaseYear: PropTypes.string.isRequired,
+    Actors: PropTypes.array,
+    ImageURL: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired
+};
