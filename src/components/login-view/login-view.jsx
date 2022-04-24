@@ -13,56 +13,22 @@ export function LoginView(props) {
   }
 
   return (
-    <form>
-      <label>
-        Username: 
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-      </label>
-      <label>
-        Password: 
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-      </label>
-      <button type='button' onClick={handleSubmit}>Submit</button>
-    </form>
+    <>
+      <form>
+        <label>
+          Username: 
+          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
+        </label>
+        <label>
+          Password: 
+          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        </label>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
+      </form>
+      <button onClick={() => {alert('Link to registration page coming soon.')}}>Register</button>
+    </>
   );
 
 }
 
-// export class LoginView extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-    // this.state = {
-    //   username: '',
-    //   password: ''
-    // };
-
-  //   this.onUsernameChange = this.onUsernameChange.bind(this);
-  //   this.onPasswordChange = this.onPasswordChange.bind(this);
-  //   this.handleSubmit = this.handleSubmit.bind(this);
-  // }
-
-  // onUsernameChange(event) {
-  //   this.setState({
-  //     username: event.target.value
-  //   });
-  // }
-
-  // onPasswordChange(event) {
-  //   this.setState({
-  //     password: event.target.value
-  //   });
-  // }
-
-  // handleSubmit() {
-  //   const { username, password } = this.state;
-  //   console.log(username, password);
-    /* Send a request to the server for authentication */
-    /* then call this.props.onLoggedIn(username) */
-    // this.props.onLoggedIn(username);
-  // }
-
-//   render() {
-    
-//   }
-// }
+LoginView.propTypes = {
