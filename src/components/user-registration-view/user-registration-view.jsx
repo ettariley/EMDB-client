@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
+import { Form, Button, Container, Row, CardGroup, Card } from 'react-bootstrap';
+import './user-registration-view.scss';
 
 export function UserRegistrationView(props) {
   const [ username, setUsername ] = useState('');
@@ -17,27 +19,62 @@ export function UserRegistrationView(props) {
   }
 
   return (
-    <>
-      <form>
-        <label>
-          Username: 
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password: 
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <label>
-          Email: 
-          <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Birthday: 
-          <input type="text" value={birthday} onChange={e => setBirthday(e.target.value)} />
-        </label>
-        <button type='submit' onClick={createNewUser}>Submit</button>
-      </form>
-    </>
+    <Container className='registration-container'>
+      <Row className='user-registration'>
+        <CardGroup>
+          <Card bg='dark' text='light' border='light'>
+            <Card.Body>
+              <Card.Title>New User Registration</Card.Title>
+              <Form>
+                <Form.Group>
+                  <Form.Label>Username: </Form.Label>
+                  <Form.Control 
+                    type="text"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)} 
+                    required
+                    placeholder='Username'
+                    />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Password: </Form.Label>
+                  <Form.Control 
+                    type="password" 
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)} 
+                    required
+                    minLength={8}
+                    placeholder='Password must be at least 8 characters.'
+                  />
+                </Form.Group>
+                <Form.Group>
+                  <Form.Label>Email: </Form.Label>
+                  <Form.Control 
+                    type="email" 
+                    value={email} 
+                    onChange={e => setEmail(e.target.value)} 
+                    required
+                    placeholder='We will never share your email with anyone.'
+                  />
+                </Form.Group>
+                <Form.Group>
+                <Form.Label>Birthday: </Form.Label>
+                  <Form.Control 
+                    type="text" 
+                    value={birthday} 
+                    onChange={e => setBirthday(e.target.value)} 
+                    placeholder='Birthday'
+                  />
+                </Form.Group>
+                <Button variant='custom-primary' type='submit' onClick={createNewUser}>
+                  Register
+                </Button>
+              </Form>
+            </Card.Body>
+          </Card>
+        </CardGroup>
+      </Row>
+    </Container>
   )
 }
 
@@ -47,7 +84,7 @@ UserRegistrationView.propTypes = {
     Password: propTypes.string,
     Email: propTypes.string,
     Birthday: propTypes.string
-  }).isRequired,
+  }),
   setUsername: propTypes.func,
   setPassword: propTypes.func,
   setEmail: propTypes.func,

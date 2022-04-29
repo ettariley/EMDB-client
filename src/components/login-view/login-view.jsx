@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
+import { Form, Button, Card, Container } from 'react-bootstrap';
+
+import './login-view.scss'
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -14,22 +17,26 @@ export function LoginView(props) {
   }
 
   return (
-    <>
-      <form>
-        <label>
-          Username: 
-          <input type="text" value={username} onChange={e => setUsername(e.target.value)} />
-        </label>
-        <label>
-          Password: 
-          <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
-        </label>
-        <button type="submit" onClick={handleSubmit}>Submit</button>
-      </form>
-      <button onClick={() => {alert('Link to registration page coming soon.')}}>Register</button>
-    </>
+    <Container className='login-container'>
+      <Card bg='dark' text='light' border='light' className='login-card'>
+        <Form>
+          <h3>User Login</h3>
+          <Form.Group controlId='formUsername'>
+            <Form.Label>Username: </Form.Label>
+            <Form.Control type='text' onChange={e => setUsername(e.target.value)} />
+          </Form.Group>
+          <Form.Group controlId='formPassword'>
+            <Form.Label>Password: </Form.Label>
+            <Form.Control type='password' onChange={e => setPassword(e.target.value)} />
+          </Form.Group>
+          <Button variant='custom-primary' type='submit' onClick={handleSubmit}>
+            Submit
+          </Button>
+        </Form>
+        <Button variant="outline-light" className='register-button'>New User? Register Here</Button>
+      </Card>
+    </Container>
   );
-
 }
 
 LoginView.propTypes = {
