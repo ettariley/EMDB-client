@@ -1,0 +1,26 @@
+@import "src/index";
+
+.movie-view {
+  color: white;
+}
+
+.movie-poster {
+  width: 90%;
+}
+
+.label {
+  font-weight: 700;
+  color: $secondary;
+}
+
+.movie-info div {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.movie-title .value {
+  font-family: $display-font;
+  font-weight: 700;
+  font-size: 2em;
+  color: $primary-color;
+}

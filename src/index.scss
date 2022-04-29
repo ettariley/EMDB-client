@@ -1,5 +1,38 @@
-$color: steelblue;
+$primary-color: #77bbbb;
+$secondary: #bb7777;
+$primary-font: 'Radio Canada';
+$display-font: 'Staatliches';
 
-.main-view {
-  color: $color;
+@import "~bootstrap/scss/bootstrap";
+
+* {
+  font-family: $primary-font, sans-serif;
 }
+
+body {
+  background-color: $dark;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $display-font;
+  color: $primary-color;
+}
+
+.btn-custom-primary {
+  font-family: $display-font;
+  background-color: $primary-color !important;
+
+  &:hover {
+    cursor: pointer;
+    color: white !important;
+  }
+}
+
