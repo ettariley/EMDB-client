@@ -1,18 +1,23 @@
 import React from 'react';
 import axios from 'axios';
+import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
-import jojoRabbit from '../../img/jojorabbit.jpg';
-import tenThings from '../../img/10things.jpeg';
-import bigHero6 from '../../img/bighero6.jpg';
+import { UserRegistrationView } from '../user-registration-view/user-registration-view';
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
+
+import './main-view.scss';
 
 export class MainView extends React.Component {
 
   constructor(){
     super();
+    // Set initial states to null
     this.state = {
       movies: [],
-      selectedMovie: null
+      selectedMovie: null,
+      user: null
     }
   }
 
@@ -34,20 +39,31 @@ export class MainView extends React.Component {
     });
   }
 
-  render() {
-    const { movies, selectedMovie } = this.state;
+  onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }
 
+  render() {
+    const { movies, selectedMovie, user } = this.state;
+
+    // If there is no user logged in, LoginView is rendered.
+    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+
+    // Before movies are loaded
     if (movies.length === 0) return <div className='main-view' />;
     
     return (
-      <div className="main-view">
+      <Row className="main-view">
         {selectedMovie
-          ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
+          ? 
+            <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }} />
           : movies.map((movie) => 
-            <MovieCard key={movie._id} movie={movie} onMovieClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }} />
+            <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }} />
             )
           }
-      </div>
+      </Row>
     );
   }
 }
