@@ -1,18 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { MainView } from './components/main-view/main-view';
 import { Container } from 'react-bootstrap';
+import { legacy_createStore as createStore } from 'redux';
+import { Provider } from 'react-redux';
+import moviesApp from './reducers/reducers';
+import { devToolsEnhancer } from 'redux-devtools-extension';
+
+import MainView from './components/main-view/main-view';
 
 // Import statement to indicate you need to bundle './index.scss'
 import './index.scss';
+
+const store = createStore(moviesApp, devToolsEnhancer());
 
 // Main component
 class EMDBApplication extends React.Component {
   render() {
     return (
-      <Container className='bg-dark'>
-        <MainView />
-      </Container>
+      <Provider store={store}>
+        <Container className='bg-dark'>
+          <MainView />
+        </Container>
+      </Provider>
     );
   }
 }

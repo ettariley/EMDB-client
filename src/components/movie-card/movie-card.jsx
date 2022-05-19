@@ -15,7 +15,7 @@ export class MovieCard extends React.Component {
     const { movie } = this.props;
     
     return (
-      <Col md={4}>
+      <Col>
         <Card bg='dark' text='light' border='light' className='movie-card'>
           <Card.Img variant="top" src={movie.ImageURL} />
           <Card.Body>
