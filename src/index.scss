@@ -1,5 +1,4 @@
 $primary-color: #77bbbb;
-$primary-color-darker: darken($primary-color, 20%);
 $secondary: #bb7777;
 $primary-font: 'Radio Canada';
 $display-font: 'Staatliches';
@@ -16,6 +15,10 @@ body {
 
 .app-container {
   min-height: 100vh;
+}
+
+.container {
+  display: flex;
 }
 
 h1, h2, h3, h4, h5, h6 {
