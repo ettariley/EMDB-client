@@ -1,5 +1,13 @@
 @import "src/index";
 
+a {
+  font-weight: 700;
+  color: $primary-color !important;
+   &:hover {
+     color: $secondary !important;
+   }
+}
+
 .movie-card {
   height: 100%;
 }
@@ -7,4 +15,10 @@
 .col-md-4 {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.featured {
+  color: $secondary;
+  font-family: $display-font;
+  font-size: 1.25em;
 }

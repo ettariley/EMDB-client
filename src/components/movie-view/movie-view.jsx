@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
-  
+
   getFormattedYear(year) {
     const d = new Date(year); 
     return d.getFullYear();
   }
 
   render() {
-    const { movie, onBackClick } = this.props;
-
+    const { movie, user, onBackClick, addFavoriteMovie } = this.props;
     return (
       <Container className='movie-view'>
-        <Row>
+        <Row className='movie-view-row'>
           <Col md={6}>
               <img className='movie-poster' src={movie.ImageURL} />
           </Col>
@@ -30,21 +31,24 @@ export class MovieView extends React.Component {
             </div>
             <div className='movie-genre'>
               <span className='label'>Genre: </span>
-              <span className='value'>{movie.Genre.Name}</span>
+              <Link to={`/genres/${movie.Genre.Name}`}>
+                <span className='value'>{movie.Genre.Name}</span>
+              </Link>
             </div>
             <div className='movie-director'>
               <span className='label'>Director: </span>
-              <span className='value'>{movie.Director.Name}</span>
+              <Link to={`/directors/${movie.Director.Name}`}>
+                <span className='value'>{movie.Director.Name}</span>
+              </Link>
             </div>
             <div className='movie-release-year'>
               <span className='label'>Release Year: </span>
               <span className='value'>{this.getFormattedYear(movie.ReleaseYear)}</span>
             </div>
-            <div className='movie-featured'>
-              <span className='label'>Featured: </span>
-              <span className='value'>{`${movie.Featured}`}</span>
+            <div>
+              <Button variant='secondary' onClick={(e) => { addFavoriteMovie(e, movie, user) }}>Add to Your Favorites</Button>
             </div>
-            <Button variant='custom-primary' size='lg' onClick={() => { onBackClick(null); }}>Back</Button>
+            <Button variant='custom-primary' onClick={() => { onBackClick(null); }}>Back</Button>
           </Col>
         </Row>
       </Container>
