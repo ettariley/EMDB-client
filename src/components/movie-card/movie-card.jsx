@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import './movie-card.scss'
 
 export class MovieCard extends React.Component {
+  // isFeatured() {
+  //   return movie.Featured;
+  // }
+  
   render() {
-    const { movie, onMovieClick } = this.props;
-
+    const { movie } = this.props;
+    
     return (
       <Col md={4}>
         <Card bg='dark' text='light' border='light' className='movie-card'>
           <Card.Img variant="top" src={movie.ImageURL} />
           <Card.Body>
-            <Card.Title>{movie.Title}</Card.Title>
+            <Card.Title>
+              <Link to={`/movies/${movie._id}`}>
+                {movie.Title}
+              </Link>
+            </Card.Title>
+            {movie.Featured && <Card.Text className='featured'>Featured!</Card.Text>}
             <Card.Text>{movie.Description}</Card.Text>
-            <Button variant='custom-primary' onClick={() => onMovieClick(movie)}>Open</Button>
+            
           </Card.Body>
         </Card>
       </Col>
@@ -42,5 +52,4 @@ MovieCard.propTypes = {
     ImageURL: PropTypes.string.isRequired,
     Featured: PropTypes.bool.isRequired
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired
 };
