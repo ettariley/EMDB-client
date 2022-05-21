@@ -11,7 +11,8 @@ import MainView from './components/main-view/main-view';
 // Import statement to indicate you need to bundle './index.scss'
 import './index.scss';
 
-const store = createStore(moviesApp, devToolsEnhancer());
+// Create Redux store
+const store = createStore(moviesApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 // Main component
 class EMDBApplication extends React.Component {
