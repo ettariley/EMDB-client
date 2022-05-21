@@ -1,6 +1,7 @@
 import React from "react";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import './profile-view.scss';
 
 export function FavoriteMovies({ favoriteMoviesList, removeFav }) {
   return (
@@ -8,7 +9,7 @@ export function FavoriteMovies({ favoriteMoviesList, removeFav }) {
         <Row className="fave-movie-title">
           <h3>Favorite Movies</h3>
         </Row>
-        <Row>
+        <Row className="justify-content-center">
             {favoriteMoviesList.map(movie => {
                 return (
                   <Col md={4} className='favorite-movie-card'>
@@ -16,7 +17,7 @@ export function FavoriteMovies({ favoriteMoviesList, removeFav }) {
                       <Card.Img variant="top" src={movie.ImageURL} />
                       <Card.Body>
                         <Card.Title>
-                          <Link to={`/movies/${movie._id}`}>
+                          <Link to={`/movies/${movie._id}`} className="movie-title">
                             {movie.Title}
                           </Link>
                         </Card.Title>  
