@@ -2,13 +2,18 @@
 
 a {
   font-weight: 700;
-  color: $primary-color !important;
-   &:hover {
-     color: $secondary !important;
-   }
+  text-decoration: none !important;
 }
 
 .movie-card {
+  height: 100%;
+  &:hover {
+    border-width: 3px;
+    border-color: $secondary!important;
+  }
+}
+
+.movie-card-col {
   height: 100%;
 }
 
