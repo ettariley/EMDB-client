@@ -4,7 +4,7 @@ import './navbar.scss';
 
 export default function Navbar({user}) {
 
-  logOut = () => {
+  const logOut = () => {
     localStorage.clear();
     window.open("/", "_self");
   }
@@ -34,7 +34,7 @@ export default function Navbar({user}) {
               )}
             {/* show sign out link if logged in */}
             {isLoggedIn() && (
-              <Button variant='link' onClick={() => { this.logOut() }}>Logout</Button>
+              <Button variant='link' onClick={() => { logOut() }}>Logout</Button>
               )}
             {/* show sign up button if not logged in */}
             {!isLoggedIn() && (
