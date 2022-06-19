@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-
 import './movie-view.scss';
 
 export class MovieView extends React.Component {
@@ -31,13 +30,13 @@ export class MovieView extends React.Component {
             </div>
             <div className='movie-genre'>
               <span className='label'>Genre: </span>
-              <Link to={`/genres/${movie.Genre.Name}`}>
+              <Link to={`/genres/${movie.Genre.Name}`} className='dg-link'>
                 <span className='value'>{movie.Genre.Name}</span>
               </Link>
             </div>
             <div className='movie-director'>
               <span className='label'>Director: </span>
-              <Link to={`/directors/${movie.Director.Name}`}>
+              <Link to={`/directors/${movie.Director.Name}`} className='dg-link'>
                 <span className='value'>{movie.Director.Name}</span>
               </Link>
             </div>
@@ -46,7 +45,7 @@ export class MovieView extends React.Component {
               <span className='value'>{this.getFormattedYear(movie.ReleaseYear)}</span>
             </div>
             <div>
-              <Button variant='secondary' onClick={(e) => { addFavoriteMovie(e, movie, user) }}>Add to Your Favorites</Button>
+              <Button variant='light' onClick={(e) => { addFavoriteMovie(e, movie, user) }}>Add to Your Favorites</Button>
             </div>
             <Button variant='custom-primary' onClick={() => { onBackClick(null); }}>Back</Button>
           </Col>
