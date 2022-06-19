@@ -60,7 +60,7 @@ export function UserRegistrationView(props) {
     return isReq;
   }
 
-  createNewUser = (e) => {
+  const createNewUser = (e) => {
     e.preventDefault();
     const isReq = validate();
     if (isReq) {
