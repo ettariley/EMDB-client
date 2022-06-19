@@ -9,7 +9,7 @@ import { MovieView } from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { UserRegistrationView } from '../user-registration-view/user-registration-view';
-import { Navbar } from '../navbar/navbar';
+import Navbar from '../navbar/navbar';
 import ProfileView from '../profile-view/profile-view';
 import { Row, Col, Button } from 'react-bootstrap';
 

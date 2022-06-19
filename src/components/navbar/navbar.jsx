@@ -2,9 +2,9 @@ import React from 'react';
 import { Navbar, Container, Button, Nav } from 'react-bootstrap';
 import './navbar.scss';
 
-export function Navbar({user}) {
+export default function Navbar({user}) {
 
-  onLoggedOut = () => {
+  logOut = () => {
     localStorage.clear();
     window.open("/", "_self");
   }
@@ -34,7 +34,7 @@ export function Navbar({user}) {
               )}
             {/* show sign out link if logged in */}
             {isLoggedIn() && (
-              <Button variant='link' onClick={() => { this.onLoggedOut() }}>Logout</Button>
+              <Button variant='link' onClick={() => { this.logOut() }}>Logout</Button>
               )}
             {/* show sign up button if not logged in */}
             {!isLoggedIn() && (
