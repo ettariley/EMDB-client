@@ -1,9 +1,8 @@
 import React from "react";
 import { Card, CardGroup, Form, Button } from "react-bootstrap";
-import axios from "axios";
 
 export function UpdateUser(props) {
-  const user = props.userInfo;
+  const userInfo = props.userInfo;
   const { handleSubmit, handleUpdate } = props;
 
   return (
@@ -17,7 +16,7 @@ export function UpdateUser(props) {
                   <Form.Control 
                     type="text"
                     name='Username'
-                    defaultValue={user.Username}
+                    defaultValue={userInfo.Username}
                     onChange={e => handleUpdate(e)} 
                     placeholder='Username must be at least 6 characters.'
                     />
@@ -28,7 +27,7 @@ export function UpdateUser(props) {
                     type="password"
                     name="Password"
                     onChange={e => handleUpdate(e)} 
-                    minLength={8}
+                    minLength={6}
                     placeholder='Password required when making changes.'
                     required
                   />
@@ -38,7 +37,7 @@ export function UpdateUser(props) {
                   <Form.Control 
                     type="email" 
                     name="Email"
-                    defaultValue={user.Email}
+                    defaultValue={userInfo.Email}
                     onChange={e => handleUpdate(e)} 
                     placeholder='Update email address.'
                   />

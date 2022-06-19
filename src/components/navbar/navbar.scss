@@ -4,3 +4,15 @@
   font-family: $display-font;
   color: $secondary !important;
 }
+
+.nav-link-center {
+  text-align: center;
+}
+
+.btn-link, .nav-link {
+  font-weight: 700;
+  color: $primary-color !important;
+   &:hover {
+     color: $secondary !important;
+   }
+}

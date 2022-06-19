@@ -1,22 +1,22 @@
 import React, { useEffect, useState} from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { UserInfo } from "./user-info";
 import { FavoriteMovies } from "./favorite-movies";
 import { UpdateUser } from "./update-user";
+import { connect } from "react-redux";
 import './profile-view.scss';
 
-export function ProfileView({ user, movies, onBackClick }) {
+function ProfileView(props) {
   const [userInfo, setUserInfo] = useState({});
   const [updatedUser, setUpdatedUser] = useState({});
   const [favoriteMoviesList, setFavoriteMoviesList] = useState([]);
-
+  let { user, movies } = props;
   let token = localStorage.getItem('token');
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-  const getUser = (token, username) => {
-    axios.get(`https://ettasmoviedb.herokuapp.com/users/${username}`, {
+  const getUserInfo = (token, user) => {
+    axios.get(`https://ettasmoviedb.herokuapp.com/users/${user}`, {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
@@ -32,18 +32,17 @@ export function ProfileView({ user, movies, onBackClick }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    axios.put(`https://ettasmoviedb.herokuapp.com/users/${userInfo.Username}`, updatedUser)
-    .then(response => {
-      setUserInfo(response.data);
-      alert('Profile Updated. You will be redirected to log in with your new information.');
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-      window.open('/', '_self');
+    axios.put(`https://ettasmoviedb.herokuapp.com/users/${user}`, updatedUser)
+      .then(response => {
+        setUserInfo(response.data);
+        alert('Profile Updated. You will be redirected to log in with your new information.');
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        window.open('/', '_self');
     })
     .catch(e => {
       console.error(e);
     });    
-    // }
   }
 
   const handleUpdate = (e) => {
@@ -82,11 +81,11 @@ export function ProfileView({ user, movies, onBackClick }) {
 
   useEffect(() => {
     if (token !== null) {
-      getUser(token, user);
+      getUserInfo(token, user);
     } else {
       console.log('Not authorized');
     }
-  }, [favoriteMoviesList]);
+  }, []);
 
   return (
     <Container className='profile-container'>
@@ -103,3 +102,9 @@ export function ProfileView({ user, movies, onBackClick }) {
     </Container>    
   );
 }
+
+let mapStateToProps = state => {
+  return { user: state.user, movies: state.movies};
+}
+
+export default connect(mapStateToProps)(ProfileView);
