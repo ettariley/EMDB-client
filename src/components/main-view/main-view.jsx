@@ -8,7 +8,7 @@ import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { UserRegistrationView } from '../user-registration-view/user-registration-view';
 import { ProfileView } from '../profile-view/profile-view';
-import { Navbar } from '../navbar/navbar';
+import Navbar from '../navbar/navbar';
 import { Row, Col, Button } from 'react-bootstrap';
 
 import './main-view.scss';
