@@ -9,13 +9,8 @@ import { MovieView } from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
 import { UserRegistrationView } from '../user-registration-view/user-registration-view';
-<<<<<<< HEAD
-import { ProfileView } from '../profile-view/profile-view';
 import Navbar from '../navbar/navbar';
-=======
 import ProfileView from '../profile-view/profile-view';
-import { Navbar } from '../navbar/navbar';
->>>>>>> 991bd919f28c7b01aaff330c3fd1d4813b0b04ff
 import { Row, Col, Button } from 'react-bootstrap';
 
 import './main-view.scss';
