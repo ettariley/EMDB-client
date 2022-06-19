@@ -9,7 +9,7 @@ export default function Navbar({user}) {
     window.open("/", "_self");
   }
 
-  isLoggedIn = () => {
+  const isLoggedIn = () => {
     let accessToken = localStorage.getItem('token');
     if(typeof window == 'undefined') {
       return false;
