@@ -31,7 +31,7 @@ export default function Navbar({user}) {
           <Nav className="me-auto">
             {/* show username for profile link if logged in */}
             {isLoggedIn() && (
-              <Link href={`/users/${user}`} className="nav-link nav-link-center" >{user}</Link>
+              <Link to={`/users/${user}`} className="nav-link nav-link-center">{user}</Link>
               )}
             {/* show sign out link if logged in */}
             {isLoggedIn() && (
@@ -39,7 +39,7 @@ export default function Navbar({user}) {
               )}
             {/* show sign up button if not logged in */}
             {!isLoggedIn() && (
-              <Link href="/register" className="nav-link nav-link-center">Sign Up</Link>
+              <Link to="/register" className="nav-link nav-link-center">Sign Up</Link>
               )}
           </Nav>
         </Navbar.Collapse>
