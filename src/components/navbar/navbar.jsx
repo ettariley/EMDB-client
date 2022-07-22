@@ -1,5 +1,6 @@
 import React from 'react';
-import { Navbar, Container, Button, Nav } from 'react-bootstrap';
+import { Navbar, Container, Button, Nav as Link } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './navbar.scss';
 
 export default function Navbar({user}) {
@@ -27,10 +28,10 @@ export default function Navbar({user}) {
         <Navbar.Brand href="/">Etta's Movie Database</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
-          <Nav className="me-auto">
+          <Link className="me-auto">
             {/* show username for profile link if logged in */}
             {isLoggedIn() && (
-              <Nav.Link href={`/users/${user}`} className="nav-link-center" >{user}</Nav.Link>
+              <Link href={`/users/${user}`} className="nav-link nav-link-center" >{user}</Link>
               )}
             {/* show sign out link if logged in */}
             {isLoggedIn() && (
@@ -38,9 +39,9 @@ export default function Navbar({user}) {
               )}
             {/* show sign up button if not logged in */}
             {!isLoggedIn() && (
-              <Nav.Link href="/register" className="nav-link-center">Sign Up</Nav.Link>
+              <Link href="/register" className="nav-link nav-link-center">Sign Up</Link>
               )}
-          </Nav>
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
